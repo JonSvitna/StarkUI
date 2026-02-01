@@ -126,7 +126,7 @@ async def create_event(run_id: int, event_data: EventCreate, db: Session = Depen
     # Broadcast to SSE subscribers
     await broadcaster.publish(run_id, {
         "type": "event",
-        "event_id": event.id,
+        "id": event.id,
         "event_type": event.event_type.value,
         "message": event.message,
         "metadata": event.metadata,
