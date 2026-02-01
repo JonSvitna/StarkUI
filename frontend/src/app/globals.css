@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-stark-border;
+  }
+  
+  body {
+    @apply bg-stark-bg text-gray-100 antialiased;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-stark-panel/80 backdrop-blur-xl border border-stark-border rounded-lg;
+  }
+  
+  .glass-button {
+    @apply glass-panel px-4 py-2 hover:bg-stark-panel hover:border-stark-accent transition-all duration-200;
+  }
+  
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}

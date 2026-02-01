@@ -1,0 +1,12 @@
+{
+  "name": "starkui-backend",
+  "version": "2.0.0",
+  "description": "Tony Stark Cockpit Backend - FastAPI Orchestrator",
+  "scripts": {
+    "start": "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}",
+    "dev": "uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
+  },
+  "engines": {
+    "python": ">=3.11.0"
+  }
+}
