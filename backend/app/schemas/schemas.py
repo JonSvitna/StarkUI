@@ -1,33 +1,7 @@
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional, List, TYPE_CHECKING
 from pydantic import BaseModel, Field
 from app.models.models import RunStatus, TaskStatus, EventType, PatchStatus
-
-
-# Run schemas
-class RunCreate(BaseModel):
-    title: str = Field(..., min_length=1, max_length=255)
-    description: Optional[str] = None
-
-
-class RunResponse(BaseModel):
-    id: int
-    title: str
-    description: Optional[str]
-    status: RunStatus
-    created_at: datetime
-    updated_at: datetime
-    
-    class Config:
-        from_attributes = True
-
-
-class RunDetail(RunResponse):
-    tasks: List["TaskResponse"] = []
-    recent_events: List["EventResponse"] = []
-    
-    class Config:
-        from_attributes = True
 
 
 # Task schemas
@@ -53,7 +27,7 @@ class TaskResponse(BaseModel):
 class EventCreate(BaseModel):
     event_type: EventType = EventType.INFO
     message: str = Field(..., min_length=1)
-    metadata: Optional[str] = None
+    event_metadata: Optional[str] = None
 
 
 class EventResponse(BaseModel):
@@ -61,8 +35,34 @@ class EventResponse(BaseModel):
     run_id: int
     event_type: EventType
     message: str
-    metadata: Optional[str]
+    event_metadata: Optional[str]
     created_at: datetime
+    
+    class Config:
+        from_attributes = True
+
+
+# Run schemas
+class RunCreate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=255)
+    description: Optional[str] = None
+
+
+class RunResponse(BaseModel):
+    id: int
+    title: str
+    description: Optional[str]
+    status: RunStatus
+    created_at: datetime
+    updated_at: datetime
+    
+    class Config:
+        from_attributes = True
+
+
+class RunDetail(RunResponse):
+    tasks: List[TaskResponse] = []
+    recent_events: List[EventResponse] = []
     
     class Config:
         from_attributes = True

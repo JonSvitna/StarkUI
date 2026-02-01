@@ -32,7 +32,7 @@ export interface Event {
   run_id: number;
   event_type: EventType;
   message: string;
-  metadata?: string;
+  event_metadata?: string;
   created_at: string;
 }
 

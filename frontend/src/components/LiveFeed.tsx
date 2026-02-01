@@ -157,9 +157,9 @@ export default function LiveFeed({ runId }: LiveFeedProps) {
                     </span>
                   </div>
                   <p className="text-sm text-gray-300 break-words">{event.message}</p>
-                  {event.metadata && (
+                  {event.event_metadata && (
                     <pre className="text-xs text-gray-500 mt-1 overflow-x-auto">
-                      {event.metadata}
+                      {event.event_metadata}
                     </pre>
                   )}
                 </div>

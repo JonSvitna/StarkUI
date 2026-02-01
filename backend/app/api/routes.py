@@ -117,7 +117,7 @@ async def create_event(run_id: int, event_data: EventCreate, db: Session = Depen
         run_id=run_id,
         event_type=event_data.event_type,
         message=event_data.message,
-        metadata=event_data.metadata
+        event_metadata=event_data.event_metadata
     )
     db.add(event)
     db.commit()
@@ -129,7 +129,7 @@ async def create_event(run_id: int, event_data: EventCreate, db: Session = Depen
         "id": event.id,
         "event_type": event.event_type.value,
         "message": event.message,
-        "metadata": event.metadata,
+        "event_metadata": event.event_metadata,
         "created_at": event.created_at.isoformat()
     })
     

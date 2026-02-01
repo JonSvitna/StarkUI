@@ -52,7 +52,7 @@ def upgrade() -> None:
         sa.Column('run_id', sa.Integer(), nullable=False),
         sa.Column('event_type', sa.Enum('INFO', 'SUCCESS', 'WARNING', 'ERROR', 'SYSTEM', name='eventtype'), nullable=False),
         sa.Column('message', sa.Text(), nullable=False),
-        sa.Column('metadata', sa.Text(), nullable=True),
+        sa.Column('event_metadata', sa.Text(), nullable=True),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
         sa.ForeignKeyConstraint(['run_id'], ['runs.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id')

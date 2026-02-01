@@ -72,7 +72,7 @@ class Event(Base):
     run_id = Column(Integer, ForeignKey("runs.id", ondelete="CASCADE"), nullable=False)
     event_type = Column(SQLEnum(EventType), default=EventType.INFO, nullable=False)
     message = Column(Text, nullable=False)
-    metadata = Column(Text, nullable=True)  # JSON string
+    event_metadata = Column(Text, nullable=True)  # JSON string (renamed from metadata to avoid SQLAlchemy conflict)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     
     # Relationships

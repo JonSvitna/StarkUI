@@ -221,12 +221,12 @@ export default function RunDetailPage() {
                         </span>
                         <span className="text-xs text-gray-500">
                           {new Date(event.created_at).toLocaleTimeString()}
-                        </span>
+                      </span>
                       </div>
                       <p className="text-sm text-gray-300">{event.message}</p>
-                      {event.metadata && (
+                      {event.event_metadata && (
                         <pre className="text-xs text-gray-500 mt-1 overflow-x-auto">
-                          {event.metadata}
+                          {event.event_metadata}
                         </pre>
                       )}
                     </div>
