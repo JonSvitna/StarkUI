@@ -1,20 +1,17 @@
-# Use Node.js base image
-FROM node:18-alpine
+# Use Python base image
+FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy backend package files
-COPY backend/package*.json ./
+# Copy backend requirements
+COPY backend/requirements.txt ./
 
 # Install dependencies
-RUN npm install --production
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend source code
-COPY backend/src ./src
+COPY backend/ ./
 
-# Expose port
-EXPOSE 3001
-
-# Start the server
-CMD ["npm", "start"]
+# Run migrations and start server
+CMD alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
