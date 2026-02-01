@@ -3,6 +3,9 @@ node_modules/
 /.pnp
 .pnp.js
 
+# Lock files (optional - remove this section if you want to commit lock files)
+# package-lock.json
+
 # Testing
 /coverage
 
@@ -10,6 +13,7 @@ node_modules/
 frontend/.next/
 frontend/out/
 frontend/build
+frontend/next-env.d.ts
 
 # Production
 build/
