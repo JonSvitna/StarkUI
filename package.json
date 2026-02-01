@@ -1,0 +1,30 @@
+{
+  "name": "starkui",
+  "version": "1.0.0",
+  "description": "Jarvis Completion - StarkUI Application",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=frontend\" \"npm run dev --workspace=backend\"",
+    "build": "npm run build --workspace=frontend",
+    "start:frontend": "npm run start --workspace=frontend",
+    "start:backend": "npm run start --workspace=backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonSvitna/StarkUI.git"
+  },
+  "keywords": [
+    "jarvis",
+    "ui",
+    "stark"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
